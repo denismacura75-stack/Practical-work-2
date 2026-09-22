@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
 import Tours from "./Tours";
-import data from "./data"; // локальні дані на випадок, якщо API не працює
+import data from "./data";
 
 const url = "https://course-api.com/react-tours-project";
 
@@ -14,7 +14,6 @@ function App() {
     try {
       const response = await fetch(url);
       if (!response.ok) {
-        // якщо сервер не відповідає — використовуємо локальні дані
         setTours(data);
         setLoading(false);
         return;
@@ -24,7 +23,7 @@ function App() {
       setLoading(false);
     } catch (error) {
       console.log("Помилка завантаження:", error);
-      setTours(data); // fallback на локальні дані
+      setTours(data);
       setLoading(false);
     }
   };
